@@ -1,10 +1,11 @@
 # Initialization to new ec2 instance 
 
 1) git clone this repo.
-2) Build a docker image using the Dockerfile using the command - `docker build -t airflow-mpowered .`.
-3) Use `docker-compose up -d` to start the container.
-4) Airflow webui can be accessed through the ec2 container ip address and 8080 port.
-5) In Admin Tab, Variables Section upload the environment specific json file provided seperately which will add the variables in the json file to the airflow environment for dags to use.
+2) Update the aws access and secret keys in the Dockerfile
+3) Build a docker image using the Dockerfile using the command - `docker build -t airflow-mpowered .`.
+4) Use `docker-compose up -d` to start the container.
+5) Airflow webui can be accessed through the ec2 container ip address and 8080 port.
+6) In Admin Tab, Variables Section upload the environment specific json file provided seperately which will add the variables in the json file to the airflow environment for dags to use.
    
 # Adding python libraries to airflow
 
