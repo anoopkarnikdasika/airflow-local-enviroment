@@ -5,5 +5,5 @@ RUN pip install --no-cache-dir --user -r /requirements.txt
 USER root
 RUN apt-get update 
 RUN echo Y | apt-get install awscli
-RUN aws configure set aws_access_key_id AKIASO23EYD2V7CN4VHJ --profile default
-RUN aws configure set aws_secret_access_key 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 --profile default
+RUN aws configure set aws_access_key_id {{aws_access_key_id}} --profile default
+RUN aws configure set aws_secret_access_key {{aws_secret_access_key}} --profile default
