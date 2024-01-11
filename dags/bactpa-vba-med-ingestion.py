@@ -35,7 +35,7 @@ target_ingestion_password = Variable.get("target_ingestion_password")
 sender = Variable.get("sender")
 ba_recipient = Variable.get("bactpa_ba_recipients",deserialize_json=True)
 dev_recipient = Variable.get("dev_recipient",deserialize_json=True)
-client_recipient = Variable.get("client_recipient",deserialize_json=True)
+client_recipient = Variable.get("bactpa_client_recipients",deserialize_json=True)
 bucket_name = Variable.get("bactpa_bucket_name")
 
 #lob specific configuration

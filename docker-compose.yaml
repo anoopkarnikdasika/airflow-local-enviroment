@@ -50,7 +50,7 @@ services:
 
   airflow-scheduler:
     <<: *airflow-common
-    command: scheduler
+    command: bash -c "airflow db upgrade && airflow scheduler"
     healthcheck:
       test: [ "CMD-SHELL", 'airflow jobs check --job-type SchedulerJob --hostname "$${HOSTNAME}"' ]
       interval: 10s
