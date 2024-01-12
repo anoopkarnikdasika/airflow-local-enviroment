@@ -25,8 +25,6 @@ def isNan(num):
 
 #lob specific configuration
 organization_name = 'mmo'
-aws_access_key_id = "AKIARL4635R4OPW5FOXP"
-aws_secret_access_key = "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"
 affliate_name = 'bactpa'
 lob_name ='providerdirectory'
 tenant_name = 'ProviderDirectory'
@@ -36,12 +34,6 @@ file_type = 'tab'
 name = 'mmo-bactpa-providerdirectory'
 bucket_name = name+'-data-ingestion'
 schedule_interval = None
-# target_ingestion_endpoint = 'https://auth.mpoweredhealth.com/fhir/'
-# target_ingestion_username = 'MPOWER-SERVER'
-# target_ingestion_password = 'MPoWeReD#2020'
-target_ingestion_endpoint = 'https://qa-fhir.mpowered-health.com/fhir/'
-target_ingestion_username = 'admin'
-target_ingestion_password = 'password'
 input_folder = "raw/"
 download_path =  "/home/airflow/"
 

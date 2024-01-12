@@ -42,9 +42,6 @@ email_aws_secret_access_key = Variable.get("email_aws_secret_access_key")
 email_aws_region = Variable.get("email_aws_region")
 bucket_name = Variable.get("ehealth_bucket_name")
 template_bucket_name = Variable.get("template_bucket_name")
-target_ingestion_endpoint = "https://dev-fhir.mpowered-health.com/fhir/"
-target_ingestion_username = "admin"
-target_ingestion_password = "mpoSmile1"
 sender = Variable.get("sender")
 ba_recipient = Variable.get("ba_recipients",deserialize_json=True)
 dev_recipient = Variable.get("dev_recipient",deserialize_json=True)

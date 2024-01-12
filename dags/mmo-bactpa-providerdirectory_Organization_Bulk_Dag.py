@@ -32,12 +32,6 @@ file_type = 'tab'
 name = 'mmo-bactpa-providerdirectory'
 bucket_name = name+'-data-ingestion'
 schedule_interval = None
-# target_ingestion_endpoint = 'https://auth.mpoweredhealth.com/fhir/'
-# target_ingestion_username = 'MPOWER-SERVER'
-# target_ingestion_password = 'MPoWeReD#2020'
-target_ingestion_endpoint = 'https://qa-fhir.mpowered-health.com/fhir/'
-target_ingestion_username = 'admin'
-target_ingestion_password = 'password'
 input_folder = "raw/"
 download_path =  "/home/airflow/"
 
