@@ -47,21 +47,23 @@ sender = Variable.get("sender")
 ba_recipient = Variable.get("ba_recipients",deserialize_json=True)
 dev_recipient = Variable.get("dev_recipient",deserialize_json=True)
 client_recipient = {'emails':[]}
-mpowered_host = "mpowered-demo-postgres.cfbneyd75l8c.us-west-2.rds.amazonaws.com"
-mpowered_port = "5432"
-mpowered_database = "mpowered"
-mpowered_user = "mpowered"
-mpowered_password  = "mpowered-server"
+mpowered_host = Variable.get("mpowered_host")
+mpowered_port = Variable.get("mpowered_port")
+mpowered_database = Variable.get("mpowered_database")
+mpowered_user = Variable.get("mpowered_user")
+mpowered_password  = Variable.get("mpowered_password")
 mpowered_member_details_table = Variable.get("mpowered_member_details_table")
-
+target_ingestion_endpoint = Variable.get("target_ingestion_endpoint")
+target_ingestion_username = Variable.get("target_ingestion_username")
+target_ingestion_password = Variable.get("target_ingestion_password")
 
 organization_name = 'Scan ORG'
 affliate_name = 'Scan'
 lob_name ='Scan Mock Data'
-org_id = '896'
-affiliate_id = '379'
+org_id = '903'
+affiliate_id = '381'
 lob_id = '163'
-tenant_name = Variable.get('tenant_name')
+tenant_name = '903_381'
 mpowered_member_table = f'member_details.members_{tenant_name}'
 resources = ['Patient', 'AllergyIntolerance', 'Condition', 'Observation', 'DiagnosticReport', 'Procedure', 'Immunization', 'Encounter', 'Medication', 'MedicationRequest', 'Claim', 'ExplanationOfBenefit', 'Coverage', 'InsurancePlan', 'Observation']
 actualresource = 'Patient'
@@ -358,6 +360,7 @@ def ingest_to_smilecdr(ds, **kwargs):
         response = requests.post(target_ingestion_endpoint+tenant_name+'/'+actualresource,
                 json=json.loads(patient.json()),
                 auth=(target_ingestion_username , target_ingestion_password)).json()
+        print(response)
         print(response['id'])
         resource = response
         patient_id = resource['id']
@@ -413,10 +416,10 @@ def ingest_to_smilecdr(ds, **kwargs):
     os.system("aws s3 rm s3://"+bucket_name+'/great_expectations/validation_success/'+actualresource+'/'+actualresource+'.csv')
     os.system("aws s3 rm s3://"+bucket_name+'/mapped/'+actualresource+'/'+actualresource+'.csv')
     my_bucket = s3_resource.Bucket(bucket_name)
-    files = my_bucket.objects.filter(Prefix="archive/")
-    files = [obj.key for obj in sorted(files,key=lambda x: x.last_modified)]
-    file_name = files[0]
-    send_mail("success",None,None,file_name)
+    # files = my_bucket.objects.filter(Prefix="archive/")
+    # files = [obj.key for obj in sorted(files,key=lambda x: x.last_modified)]
+    # file_name = files[0]
+    # send_mail("success",None,None,file_name)
 
 # def update_postgres(ds, **kwargs):
 #     time = str(date.today())

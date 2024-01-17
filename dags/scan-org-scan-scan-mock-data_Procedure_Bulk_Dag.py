@@ -49,11 +49,14 @@ mpowered_port = Variable.get("mpowered_port")
 mpowered_database = Variable.get("mpowered_database")
 mpowered_user = Variable.get("mpowered_user")
 mpowered_password  = Variable.get("mpowered_password")
+target_ingestion_endpoint = Variable.get("target_ingestion_endpoint")
+target_ingestion_username = Variable.get("target_ingestion_username")
+target_ingestion_password = Variable.get("target_ingestion_password")
 
 organization_name = 'Scan ORG'
 affliate_name = 'Scan'
 lob_name ='Scan Mock Data'
-tenant_name = Variable.get('tenant_name')
+tenant_name = '903_381'
 resources = ['Patient', 'AllergyIntolerance', 'Condition', 'Observation', 'DiagnosticReport', 'Procedure', 'Immunization', 'Encounter', 'Medication', 'MedicationRequest', 'Claim', 'ExplanationOfBenefit', 'Coverage', 'InsurancePlan', 'Observation']
 actualresource = 'Procedure'
 file_type = 'csv'
@@ -433,10 +436,10 @@ def ingest_to_smilecdr(ds, **kwargs):
     os.system("aws s3 rm s3://"+bucket_name+'/great_expectations/validation_success/'+actualresource+'/'+actualresource+'.csv')
     os.system("aws s3 rm s3://"+bucket_name+'/mapped/'+actualresource+'/'+actualresource+'.csv')
     my_bucket = s3_resource.Bucket(bucket_name)
-    files = my_bucket.objects.filter(Prefix="archive/")
-    files = [obj.key for obj in sorted(files,key=lambda x: x.last_modified)]
-    file_name = files[0]
-    send_mail("success",None,None,file_name)
+    # files = my_bucket.objects.filter(Prefix="archive/")
+    # files = [obj.key for obj in sorted(files,key=lambda x: x.last_modified)]
+    # file_name = files[0]
+    # send_mail("success",None,None,file_name)
 
 # def update_postgres(ds, **kwargs):
 #     time = str(date.today())

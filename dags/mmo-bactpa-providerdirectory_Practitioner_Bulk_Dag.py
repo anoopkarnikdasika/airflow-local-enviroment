@@ -26,6 +26,8 @@ def isNan(num):
     return num!=num
 
 #lob specific configuration
+aws_access_key_id = Variable.get("aws_access_key_id")
+aws_secret_access_key = Variable.get("aws_secret_access_key")
 organization_name = 'mmo'
 affliate_name = 'bactpa'
 lob_name ='providerdirectory'

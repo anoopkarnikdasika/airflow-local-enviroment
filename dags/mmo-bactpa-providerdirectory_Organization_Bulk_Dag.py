@@ -20,6 +20,8 @@ from airflow.providers.amazon.aws.sensors.s3_key import S3KeySensor
 from airflow.models import Variable
 
 #lob specific configuration
+aws_access_key_id = Variable.get("aws_access_key_id")
+aws_secret_access_key = Variable.get("aws_secret_access_key")
 organization_name = 'mmo'
 aws_access_key_id = "AKIARL4635R4OPW5FOXP"
 aws_secret_access_key = "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"
